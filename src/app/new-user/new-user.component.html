@@ -1,0 +1,16 @@
+    <form (submit)="ClickHandler()" [formGroup]="NewUser" class="new-user">
+        <mat-form-field>
+            <mat-label>Bitte Enail angeben</mat-label>
+<input formControlName="email" matInput>
+</mat-form-field>
+<mat-form-field>
+    <mat-label>Bitte Nikname angeben</mat-label>
+<input formControlName="name" matInput maxlength="10">
+</mat-form-field>
+<mat-form-field>
+    <mat-label>bitte Passwort abgeben</mat-label>
+<input formControlName="password" matInput >
+<!-- @if(password.invalid){ <mat-error>{{getErrorMessage()}}</mat-error>} -->
+</mat-form-field>
+<button type="submit  ">Account Erstellen</button>
+    </form>

@@ -1,0 +1,16 @@
+<div class="login-form">
+    <h3>Hast du schon ein Account?</h3>
+    <form (submit)="ClickHandler()"  class="login-form" [formGroup]="loginForm">
+    <mat-form-field >
+        <mat-label>Bitte Email eingeben</mat-label>
+        <input matInput type="email"  formControlName="email">
+    </mat-form-field>
+<mat-form-field>
+        <mat-label>Bitte Passwort eingeben</mat-label>
+        <input matInput type="password" formControlName="password">
+    </mat-form-field>
+     <button  type="submit">Anmelden</button> 
+    
+    </form>
+    <button  type="button" routerLink="/U/NewUser" class="create-account-button">Account Erstellen </button>
+</div>
