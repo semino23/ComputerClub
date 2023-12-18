@@ -7,13 +7,11 @@ export const authGuard: CanActivateFn = (route, state) => {
 const cookieService:CookieService = Inject(CookieService);
 const userService:UserService = Inject(UserService);
 
-if(!cookieService.check("u-auth")){
-  return false;
+if(!userService.AuthUser()){
+return false;
 }
 else{
-  let cookie = JSON.parse(cookieService.get("u-auth"));
-  userService.GetUserWithCookie(cookie)
-  return true;
+    return true;
 }
 
 };

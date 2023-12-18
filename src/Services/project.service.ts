@@ -35,7 +35,6 @@ return Project;
 }
 
 UpdateProjectDetails(name:string , newDetails:ProjectModel){
-
 if(this.userService.AuthUser()){
 let cookie = this.cookieService.get("u-auth");
 let Param = new HttpParams().append("name" , name).append("cookie" , cookie)

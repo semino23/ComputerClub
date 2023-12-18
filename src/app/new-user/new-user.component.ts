@@ -18,7 +18,7 @@ import {MatButtonModule} from '@angular/material/button';
 export class NewUserComponent {
   EmailErr = false;
   passwordErr = false;
-userModel:UserModel = new UserModel;
+userModel:UserModel = new UserModel();
 constructor(private userService:UserService){}
 
 

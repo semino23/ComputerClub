@@ -1,11 +1,7 @@
-// import { Injectable } from "@angular/core";
-
-// Injectable({
-//     providedIn: 'root'
-//   })
-  
-export class UserModel{
-name!: string;
-email!: string;
-password! : string;
+export class UserModel  {
+    name!: string;
+    password!: string;
+    image!: Blob;
+    email!: string;
 }
+
