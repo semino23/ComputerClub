@@ -11,6 +11,6 @@ export const routes: Routes = [
     {path:"Impressum", component:LegalNoticeComponent},
     {path:"U", component:LoginComponent},
     {path:"U/NewUser" , component:NewUserComponent},
-    {path:"U/Account" , component:UserComponent, canActivate:[authGuard]},
-    {path:"**", redirectTo:""},
+    {path:"U/Account" , component:UserComponent},
+    {path:"**", redirectTo:""}, 
 ];
