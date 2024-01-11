@@ -13,26 +13,29 @@ import {MatButtonModule} from '@angular/material/button';
   imports: [ReactiveFormsModule , MatFormFieldModule , MatInputModule ,MatButtonModule],
   templateUrl: './new-user.component.html',
   styleUrl: './new-user.component.scss',
-  providers:[UserService, UserModel]
+  providers:[UserService]
 })
 export class NewUserComponent {
   EmailErr = false;
   passwordErr = false;
-userModel:UserModel = new UserModel();
 constructor(private userService:UserService){}
 
 
 NewUser = new FormGroup({
-  email :new FormControl(""),
-  name : new FormControl(""),
-  password: new FormControl("")
+  email :new FormControl("" , [Validators.required , Validators.email]),
+  name : new FormControl("" , Validators.required),
+  password: new FormControl("" , [Validators.required , Validators.minLength(10)])
 })
 
 
 ClickHandler(){
-this.userModel.email = this.NewUser.value.email as string; 
-this.userModel.name = this.NewUser.value.name as string;
-this.userModel.password = this.NewUser.value.password as string;
-this.userService.CreateUser(this.userModel)
+let email = this.NewUser.value.email as string; 
+let name = this.NewUser.value.name as string;
+let password = this.NewUser.value.password as string;
+this.userService.CreateUser({
+  name: name, 
+  email: email, 
+  password: password,
+})
 }
 }

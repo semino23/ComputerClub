@@ -1,6 +1,6 @@
     <form (submit)="ClickHandler()" [formGroup]="NewUser" class="new-user">
         <mat-form-field>
-            <mat-label>Bitte Enail angeben</mat-label>
+            <mat-label>Bitte Email angeben</mat-label>
 <input formControlName="email" matInput>
 </mat-form-field>
 <mat-form-field>
@@ -8,6 +8,7 @@
 <input formControlName="name" matInput maxlength="10">
 </mat-form-field>
 <mat-form-field>
+    <mat-hint>Mindesten 10 Zeichen</mat-hint>
     <mat-label>bitte Passwort abgeben</mat-label>
 <input formControlName="password" matInput >
 <!-- @if(password.invalid){ <mat-error>{{getErrorMessage()}}</mat-error>} -->

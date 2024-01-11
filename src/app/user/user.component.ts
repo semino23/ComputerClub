@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { UserService } from '../../Services/user.service';
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './user.component.scss'
 })
 export class UserComponent implements OnInit{
-
+private userService:UserService = inject(UserService)
 
 ngOnInit(): void {
-  console.log("Hello World")
+
+this.userService.GetUserWithCookie()
+
 }
 }

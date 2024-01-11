@@ -1,0 +1,20 @@
+<!-- Header -->
+<mat-card-header>
+ <img  mat-card-avatar class="author-profile-picture" [src]="authorImage">
+ <mat-card-title>{{Project.Title}}</mat-card-title>
+<mat-card-subtitle>Erstellt von {{Project.author.name| lowercase}}</mat-card-subtitle>
+<mat-card-subtitle>Erstellt am {{Project.date | date}}</mat-card-subtitle>
+</mat-card-header>
+<!-- Content / brief description-->
+<img mat-card-xl-image [src]="projectImage" class="project-image">
+<mat-card-content class="contents">
+<p class="project-description">
+        {{Project.description}}
+</p>
+</mat-card-content>
+<!--buttons -->
+<mat-card-actions>
+<button mat-flat-button routerLink="/Projekte/{{Project.Title}}">See more</button>
+<button mat-flat-button (click)="AddLike()"  [disabled]="liked">{{Project.likes}} ❤️</button>
+<!-- <button mat-flat-button (click)="AddLike()">Kommentare</button> -->
+</mat-card-actions>

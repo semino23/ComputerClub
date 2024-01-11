@@ -1,0 +1,16 @@
+<div class="project-list">
+@if(ProjectList===null)
+{
+<h1>Es gibt noch keine Projekte</h1>
+}
+@else{
+@for(Project of ProjectList; track $index) {
+<app-project-card-bed>
+<app-project-card [Project]="Project"></app-project-card>
+</app-project-card-bed>
+}
+}
+</div>
+<html lang="en">
+<html lang="en">
+<html lang="en">

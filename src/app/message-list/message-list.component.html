@@ -1,0 +1,14 @@
+<mat-list role="list">
+@for (message of messageList; track $index) {
+<mat-list-item role="listitem">    
+<h4>{{message.message}}</h4>
+     <app-message [message]="message"></app-message> 
+</mat-list-item>
+<br>
+<mat-divider></mat-divider>
+}
+<app-write-comment-or-suggestion-form></app-write-comment-or-suggestion-form>
+</mat-list>
+
+
+

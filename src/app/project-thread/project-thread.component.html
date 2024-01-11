@@ -1,0 +1,21 @@
+<div class="thread">
+<H2>{{name}}</H2>
+<mat-tab-group dynamicHeight fitInkBarToContent="" class="mat-tab">
+ <mat-tab label="Blog Posts">
+<ng-template matTabContent>
+<app-project-blog-list [title]="name"></app-project-blog-list>
+</ng-template>
+</mat-tab>
+<mat-tab label="Ideen und Vorschläge">
+    <ng-template matTabContent>
+<app-message-list [title]="name" ></app-message-list>
+    </ng-template>
+        
+</mat-tab> 
+<!-- Fragwüdig -->
+<!-- <mat-tab label="Kommentare">
+    <ng-template matTabContent="">
+
+    </ng-template></mat-tab>-->
+</mat-tab-group> 
+</div>

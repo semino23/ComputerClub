@@ -1,8 +1,10 @@
 import { UserModel } from "./UserModel";
 
 export interface ProjectModel{
+    date:Date
     author: UserModel;
     Title: string;
     description: string;
-    image:Blob;
+    image?:Blob;
+    likes:number;
     }

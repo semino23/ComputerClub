@@ -1,0 +1,30 @@
+<div class="project-blog-list">
+@if(project === undefined){
+<h2>Es ist noch nichts hier ;(</h2>
+}
+@else {
+@for (project of project; track $index) {
+@switch (project.type) {
+@case ("Text Blog"){
+
+<app-project-card-bed>
+<app-project-blog [projectBlogOverView]="project"></app-project-blog>
+</app-project-card-bed>
+
+}
+@case ("Bild"){
+<app-project-card-bed>
+<app-project-image></app-project-image>
+</app-project-card-bed>
+}
+@case ("Roadmap") {
+
+
+}
+
+}
+
+
+}
+}
+</div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl , FormGroup , ReactiveFormsModule} from '@angular/forms';
+import { FormControl , FormGroup , ReactiveFormsModule, Validators} from '@angular/forms';
 import { RouterLink, RouterOutlet  , RouterModule, Router} from '@angular/router';
 import { UserService } from '../../Services/user.service';
 //Materials
@@ -17,13 +17,22 @@ import {MatButtonModule} from '@angular/material/button';
 export class LoginComponent{
 constructor(private userService:UserService , private router:Router){}
 
-loginForm = new FormGroup({email: new FormControl("") , password : new FormControl("") });
+loginForm = new FormGroup(
+  {email: new FormControl("" , [Validators.required , Validators.email]) ,
+   password : new FormControl("" , Validators.required) 
+  });
 
 
  async ClickHandler(){
- let email:string = this.loginForm.value.email as string ;
+if(!this.loginForm.invalid){
+  let email:string = this.loginForm.value.email as string ;
  let password:string =  this.loginForm.value.password as string;
  this.userService.Login(email , password)
+}
+else{
+console.log("Da stimmt was nicht")
+
+}
 }
   
 

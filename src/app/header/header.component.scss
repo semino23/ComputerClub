@@ -1,5 +1,9 @@
 .header{
+@media(500 >= width){
+
+}
     display: flex;
-    justify-content: space-around;
     height: 40px;
+    overflow:hidden;
+    justify-content:space-evenly;
 }
