@@ -17,6 +17,12 @@ import { UserModel } from '../../Models/UserModel';
   styleUrl: './project-card.component.scss'
 })
 export class ProjectCardComponent{
+DeleteBlog() {
+if(confirm("Wirklich löschen ?")){
+  this.projectService.DeleteProjects(this.Project.Title)
+}
+}
+liked: boolean = false ;
 
 async AddLike() {
 if(this.userService.AuthUser()){
@@ -36,7 +42,6 @@ constructor(private userService:UserService , private projectService :ProjectSer
 @Input({alias:"Project" , required:true}) Project!:ProjectModel;
 link:string ="";
 authorImage:Blob|string = this.Project?.author.image || "./assets/pictures/placeholder-user.jpg";
-projectImage:string|Blob = this.Project?.image || "./assets/pictures/placeholder-project.png";
-liked:boolean=false;
+projectImage:String = this.Project.image?  this.Project.image  : "./assets/pictures/placeholder-project.png";
 }
 

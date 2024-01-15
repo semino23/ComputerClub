@@ -6,36 +6,44 @@ import { UserModel } from '../../Models/UserModel';
 //Materials
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 @Component({
   selector: 'app-new-user',
   standalone: true,
-  imports: [ReactiveFormsModule , MatFormFieldModule , MatInputModule ,MatButtonModule],
+  imports: [ReactiveFormsModule , MatFormFieldModule , MatInputModule ,MatButtonModule,MatCheckboxModule],
   templateUrl: './new-user.component.html',
   styleUrl: './new-user.component.scss',
-  providers:[UserService]
 })
 export class NewUserComponent {
-  EmailErr = false;
-  passwordErr = false;
-constructor(private userService:UserService){}
+//  isAdmin:boolean = false
+//   admin= ()=>{
+// this.isAdmin = true;
+//  };
+  constructor(private userService:UserService){}
 
 
 NewUser = new FormGroup({
-  email :new FormControl("" , [Validators.required , Validators.email]),
   name : new FormControl("" , Validators.required),
-  password: new FormControl("" , [Validators.required , Validators.minLength(10)])
+  password: new FormControl("" , [Validators.required , Validators.minLength(10)]),
+  admin : new FormControl(false),
+  adminCode: new FormControl("")
 })
 
 
 ClickHandler(){
-let email = this.NewUser.value.email as string; 
-let name = this.NewUser.value.name as string;
-let password = this.NewUser.value.password as string;
-this.userService.CreateUser({
-  name: name, 
-  email: email, 
-  password: password,
-})
+let user = new UserModel()
+user.name = this.NewUser.value.name as string;
+user.password = this.NewUser.value.password as string;
+if(this.NewUser.value.admin && this.NewUser.value.adminCode){
+let authCode = this.NewUser.value.adminCode
+this.userService.CreateAdmin(user , authCode)
+
+}
+else if(!this.NewUser.value.admin){
+  this.userService.CreateUser(user);
+}
+else console.log("no auth code :(");
+// this.userService.CreateUser(user)
 }
 }

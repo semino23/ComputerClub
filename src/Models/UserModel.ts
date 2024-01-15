@@ -1,7 +1,7 @@
-export interface UserModel  {
-    name: string;
-    password: string;
+export class UserModel  {
+    name!: string;
+    password!: string;
     image?: Blob;
-    email: string;
+    id?:number
 }
 

@@ -1,8 +1,4 @@
     <form (submit)="ClickHandler()" [formGroup]="NewUser" class="new-user">
-        <mat-form-field>
-            <mat-label>Bitte Email angeben</mat-label>
-<input formControlName="email" matInput>
-</mat-form-field>
 <mat-form-field>
     <mat-label>Bitte Nikname angeben</mat-label>
 <input formControlName="name" matInput maxlength="10">
@@ -11,7 +7,15 @@
     <mat-hint>Mindesten 10 Zeichen</mat-hint>
     <mat-label>bitte Passwort abgeben</mat-label>
 <input formControlName="password" matInput >
-<!-- @if(password.invalid){ <mat-error>{{getErrorMessage()}}</mat-error>} -->
 </mat-form-field>
+    <mat-checkbox formControlName="admin">Admin Account</mat-checkbox>
+    @if(NewUser.value.admin){
+        <p>Um einen Admin Account anlegen zu können musst du <br> mich um einen zufallsgenerierten einmal-code Fragen :)</p>
+    <mat-form-field>
+        <mat-label>Bitte den Code eingeben</mat-label>
+        <input matInput formControlName="adminCode">
+    </mat-form-field>
+    }
 <button type="submit  ">Account Erstellen</button>
     </form>
+    

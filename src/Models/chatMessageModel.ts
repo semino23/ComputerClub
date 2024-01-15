@@ -1,6 +1,8 @@
 import { UserModel } from "./UserModel";
 
-export interface ChatMessageModel{
-author:UserModel
-message:string;
+export class ChatMessageModel{
+author!:UserModel
+message!:string;
+id?:number;
+
 }

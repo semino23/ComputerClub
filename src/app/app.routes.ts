@@ -10,6 +10,7 @@ import { JoiningFormComponent } from './joining-form/joining-form.component';
 import { ProjectThreadComponent } from './project-thread/project-thread.component';
 import { NewProjectComponent } from './new-project/new-project.component';
 import { NewBlogFormComponent } from './new-blog-form/new-blog-form.component';
+import { adminGuard } from '../Guards/admin.guard';
 
 export const routes: Routes = [
     {path:"" , component:HomeComponent},
@@ -18,8 +19,8 @@ export const routes: Routes = [
     {path:"U/NewUser" , component:NewUserComponent},
     {path:"U/Account" , component:UserComponent , canActivate:[authGuard]},
     {path:"Projekte" , component:ProjectListComponent},
-    {path:"Projekte/Neues Projekt" , component:NewProjectComponent , canActivate:[authGuard]},
-    {path:"Projekte/Neuer Blog" , component:NewBlogFormComponent , canActivate:[authGuard]},
+    {path:"Projekte/NeuesProjekt" , component:NewProjectComponent , canActivate:[adminGuard]},
+    {path:"Projekte/NeuerBlog" , component:NewBlogFormComponent , canActivate:[adminGuard]},
     {path:"Projekte/:name" , component:ProjectThreadComponent},
     {path:"Beitreten" , component:JoiningFormComponent},
     {path:"**", redirectTo:""}, 

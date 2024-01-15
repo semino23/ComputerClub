@@ -16,5 +16,7 @@
 <mat-card-actions>
 <button mat-flat-button routerLink="/Projekte/{{Project.Title}}">See more</button>
 <button mat-flat-button (click)="AddLike()"  [disabled]="liked">{{Project.likes}} ❤️</button>
+<button mat-flat-button color="warn"  (click)="DeleteBlog()"  [disabled]="liked">{{Project.likes}} ❤️</button>
+
 <!-- <button mat-flat-button (click)="AddLike()">Kommentare</button> -->
 </mat-card-actions>

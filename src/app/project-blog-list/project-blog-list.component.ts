@@ -14,18 +14,9 @@ import { ProjectImageComponent } from '../project-image/project-image.component'
 })
 export class ProjectBlogListComponent implements OnInit{
   constructor(private projectService:ProjectService){}
-TestModel:Array<ProjectBlogListModel> = new Array<ProjectBlogListModel>(10).fill({
-  title: "Hello World",
-  date: new Date(),
-  description: "this is a brief overview",
-  type:ProjectBlogTypes.textBlog
-}) 
 @Input({required:true}) title!:string|null;
 project?:ProjectBlogListModel[];
 ngOnInit(): void {
 this.projectService.GetProjectBlogs(this.title!).subscribe((res)=>this.project = res)
-if(this.project === undefined){
-  this.project = this.TestModel;
-}
 }
 }

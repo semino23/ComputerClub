@@ -1,1 +1,4 @@
-<p>write-comment-or-suggestion-form works!</p>
+<form class="comment-input" (submit)="SendComment()">
+    <input type="text" [(ngModel)]="comment" class="commentinput" matInput required placeholder="Bitte Kommentar eingeben" name="comment">
+    <button type="submit" class="submit" mat-raised-button>Senden</button>
+</form>

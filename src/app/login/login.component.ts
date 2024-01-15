@@ -18,16 +18,16 @@ export class LoginComponent{
 constructor(private userService:UserService , private router:Router){}
 
 loginForm = new FormGroup(
-  {email: new FormControl("" , [Validators.required , Validators.email]) ,
+  {name: new FormControl("" , [Validators.required , Validators.email]) ,
    password : new FormControl("" , Validators.required) 
   });
 
 
  async ClickHandler(){
 if(!this.loginForm.invalid){
-  let email:string = this.loginForm.value.email as string ;
+  let name:string = this.loginForm.value.name as string ;
  let password:string =  this.loginForm.value.password as string;
- this.userService.Login(email , password)
+ this.userService.Login(name , password)
 }
 else{
 console.log("Da stimmt was nicht")

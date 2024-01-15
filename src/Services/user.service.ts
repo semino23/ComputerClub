@@ -9,9 +9,24 @@ import { map, catchError, retry, Observable, firstValueFrom, retryWhen, tap } fr
 })
 export class UserService {
 rootUrl = "";
-
-
+CreateAdmin(user:UserModel , authCode:string){
+let Param = new HttpParams().set("authCode" , authCode)
+this.http.post(this.rootUrl + "" , user , {params:Param}).pipe(catchError(async(err)=>ErrorHandler(err)))
+}
   constructor(private http:HttpClient , private cookieService : CookieService) { }
+
+//cheks if use is admin (member of the computerclub)
+AuthUserAsAdmin():boolean{
+  if(this.cookieService.check("u-auth")){
+  let param = new HttpParams().set("cookie" , this.cookieService.get("u-auth"))
+   let isAdmin:boolean = false;
+    this.http.get<boolean>(this.rootUrl + "/chekUserIsAdmin" , {params:param}).subscribe((res)=> isAdmin = res)
+    return isAdmin;
+  }
+else{
+  return false
+}
+}
 
 // Create New User
 CreateUser(user:UserModel){

@@ -1,1 +1,16 @@
-<p>new-project works!</p>
+<form (submit)="PostProject()" [formGroup]="blogForm" class="new-projekt-form">
+    <mat-form-field> 
+<mat-label>bitte Titel eingeben</mat-label>
+<input matInput formControlName="titel">
+</mat-form-field>
+<mat-form-field>
+    <mat-label>bitte Beschreibung eingeben</mat-label>
+    <input matInput formControlName="description">
+    </mat-form-field>
+    <button type="button" mat-flat-button (click)="FileHandler.click()">Bild einfügen</button>
+    @if (blogForm.value.image) {
+        <img [src]="blogForm.value.image" alt="Bild nicht gültig" height="350px" width="350px">
+    }
+<button mat-flat-button type="submit" >Projekt erstellen</button>
+</form>
+<input type="file"  hidden #FileHandler (change)="onFileSelect($event)">

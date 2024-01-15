@@ -6,6 +6,6 @@ title:String;
 description:string;
 type:ProjectBlogTypes;
 date:Date;
-
+id:number;
 
 } 

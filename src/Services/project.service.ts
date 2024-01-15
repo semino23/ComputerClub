@@ -12,6 +12,11 @@ import { ProjectBlogListModel } from '../Models/BlogModels/ProjectBlogList';
 export class ProjectService {
   constructor(private http:HttpClient , private cookieService:CookieService , private userService:UserService) { }
 private rootUrl = ""
+DeleteProjects(projectTitle:string){
+if(this.userService.AuthUserAsAdmin()){
+  let param = new HttpParams().append("title" , projectTitle)
+this.http.delete(this.rootUrl + "" ,{params:param}).pipe(catchError(async(err)=>ErrorHandler(err))).subscribe()
+}}
 //TODO: add caching
 GetProjectBlogs(title:string):Observable<Array<ProjectBlogListModel>>{
 let param = new HttpParams().append("blogTitle",title)
@@ -20,7 +25,7 @@ return this.http.get<Array<ProjectBlogListModel>>(this.rootUrl + "" , {params:pa
 
 LikeProject(name:string , user:UserModel){
 let param = new HttpParams().append("name", name).append("user" , JSON.stringify(user))
-this.http.get(this.rootUrl =" " , {params:param})
+this.http.get(this.rootUrl =" " , {params:param}).pipe(catchError(async(err)=>ErrorHandler(err))).subscribe()
 }
 //TODO: add caching
 GetProjectList():Observable<Array<ProjectModel>>{
@@ -29,18 +34,19 @@ return ProjectList;
 }
 
 PostProject(project:ProjectModel){
-  if(this.userService.AuthUser()){
+  if(this.userService.AuthUserAsAdmin()){
     let cookie = this.cookieService.get("u-auth");
     let Param = new HttpParams().append("cookie" , cookie)
-      this.http.put(this.rootUrl+"",project,{params:Param}).pipe(retry(1),map((res)=>console.log(res)),catchError(async(err)=>ErrorHandler(err)))
+    this.http.post(this.rootUrl + "", project , {params:Param})
+      // this.http.put(this.rootUrl+"",project,{params:Param}).pipe(retry(1),map((res)=>console.log(res)),catchError(async(err)=>ErrorHandler(err)))
     }else{alert("You dont have the permission")}
   
 }
 UpdateProjectDetails(name:string , newDetails:ProjectModel){
-if(this.userService.AuthUser()){
+if(this.userService.AuthUserAsAdmin()){
 let cookie = this.cookieService.get("u-auth");
 let Param = new HttpParams().append("name" , name).append("cookie" , cookie)
-  this.http.put(this.rootUrl+"",newDetails,{params:Param}).pipe(retry(1),map((res)=>console.log(res)),catchError(async(err)=>ErrorHandler(err)))
+  this.http.put(this.rootUrl+"",newDetails,{params:Param}).pipe(retry(1),map((res)=>console.log(res)),catchError(async(err)=>ErrorHandler(err))).pipe(catchError(async(err)=>ErrorHandler(err)))
 }else{alert("You dont have the permission")}
 
 }

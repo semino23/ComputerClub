@@ -1,5 +1,10 @@
-<div class="message">
-<img [src]="profileImage">
-<h2>{{message.author.name}}</h2>
-<p>{{message.message}}</p>
-</div>
+@if (message !== undefined) {
+<mat-list-item class="message">
+    <!--TODO: Pb hinzufügen-->
+<!-- <mat-icon matListItemIcon></mat-icon> -->
+<!-- <img matListItemAvatar [src]="profileImage"> -->
+<h2 matListItemTitle>{{message.author.name}}</h2>
+<p matListItemLine >{{message.message}}</p>
+</mat-list-item>}
+<br>
+<mat-divider></mat-divider>

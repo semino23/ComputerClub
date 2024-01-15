@@ -10,10 +10,8 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './project-blog.component.html',
   styleUrl: './project-blog.component.scss'
 })
-export class ProjectBlogComponent implements OnInit {
+export class ProjectBlogComponent {
 @Input({required:true}) projectBlogOverView!:ProjectBlogListModel
 
  
-ngOnInit(): void {
-}
 }
