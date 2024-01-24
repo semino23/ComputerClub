@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { UserModel } from '../Models/UserModel';
 import { HttpClient  , HttpParams , HttpHeaders} from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { map, catchError, retry, Observable, firstValueFrom, retryWhen, tap } from 'rxjs';
+import { map, catchError, retry, Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
